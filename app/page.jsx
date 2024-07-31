@@ -29,12 +29,19 @@ const UserIcon = async ({ promise }) => {
 };
 
 const UserText = async ({ promise }) => {
+  const user = await promise;
 
-	const user = await promise;
+  // Extract the site URL
+  const siteUrl = user.bio.match(/https:\/\/[^\s]+/)[0];
 
-	return (
-		<p>Hi, my name is {user.name || data.displayName}{'. '}{user.bio}</p>
-	);
+  // Update user.bio to have the clickable link for "Jagad"
+  user.bio = user.bio.replace(/Jagad\s+https:\/\/[^\s]+/, `<a href="${siteUrl}" target="_blank" rel="noopener noreferrer">Jagad</a>`);
+
+  return (
+    <p>
+      Hi, my name is {user.name || user.displayName}. <span dangerouslySetInnerHTML={{ __html: user.bio }} />
+    </p>
+  );
 };
 
 const LandingComponent = async ({ searchParams: { customUsername } }) => {

@@ -1,5 +1,15 @@
 # Elliot Park's Portfolio
 
+# 🔗 [Elliot Park's Portfolio](https://portfolio2-g4ljsqlf0-elliot-parks-projects.vercel.app/)
+
+<br>
+
+<a href="https://portfolio2-g4ljsqlf0-elliot-parks-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
+    <img src="public/screenshot.png" title="Elliot Park's Portfolio" width="720px">
+</a>
+
+<br>
+
 ## Tech stack
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)

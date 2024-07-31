@@ -1,10 +1,10 @@
 # Elliot Park's Portfolio
 
-# 🔗 [Elliot Park's Portfolio](https://portfolio2-g4ljsqlf0-elliot-parks-projects.vercel.app/)
+# 🔗 [Elliot Park's Portfolio](https://portfolio2-8mdv4dvmx-elliot-parks-projects.vercel.app/)
 
 <br>
 
-<a href="https://portfolio2-g4ljsqlf0-elliot-parks-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
+<a href="https://portfolio2-8mdv4dvmx-elliot-parks-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
     <img src="public/screenshot.png" title="Elliot Park's Portfolio" width="720px">
 </a>
 
@@ -27,7 +27,3 @@ LinkedIn: [https://www.linkedin.com/in/elliot-park/](https://www.linkedin.com/in
 
 Email: [elliotpark410@gmail.com](mailto:elliotpark410@gmail.com)
 <br>
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.

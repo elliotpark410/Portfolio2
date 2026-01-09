@@ -1,11 +1,12 @@
 {
-	"description": "",
-	"githubUsername": "elliotpark410",
-	"avatarUrl": "",
-	"displayName": "Elliot Park",
-	"email": "elliotpark410@gmail.com",
-	"projects": {
-		"blacklist": [],
-		"heroNames": []
-	}
+    "description": "",
+    "githubUsername": "elliotpark410",
+    "avatarUrl": "",
+    "displayName": "Elliot Park",
+    "email": "elliotpark410@gmail.com",
+    "projects": {
+        "blacklist": [],
+        "heroNames": []
+    },
+    "socials": {}
 }

@@ -23,6 +23,15 @@ const UserIcon = async ({ promise }) => {
 
 	const user = await promise;
 
+	if (!user) {
+    return (
+      <p>
+        Hi! I couldn&apos;t load the GitHub profile right now. Please try again in a
+        moment.
+      </p>
+    );
+	}
+
 	return (
 		<Image alt='👨‍💻' width={100} height={100} src={user.avatar_url || data.avatarUrl} className="float-right rounded-full mx-4" />
 	);
@@ -32,10 +41,16 @@ const UserText = async ({ promise }) => {
   const user = await promise;
 
   // Extract the site URL
-  const siteUrl = user.bio.match(/https:\/\/[^\s]+/)[0];
+  const match = user?.bio?.match(/https:\/\/[^\s]+/);
+	const siteUrl = match?.[0] ?? null;
 
   // Update user.bio to have the clickable link for "Jagad"
-  user.bio = user.bio.replace(/Jagad\s+https:\/\/[^\s]+/, `<a href="${siteUrl}" target="_blank" rel="noopener noreferrer">Jagad</a>`);
+  if (siteUrl) {
+		user.bio = user.bio.replace(
+			/Jagad\s+https:\/\/[^\s]+/,
+			`<a href="${siteUrl}" target="_blank" rel="noopener noreferrer">Jagad</a>`
+		);
+	}
 
   return (
     <p>

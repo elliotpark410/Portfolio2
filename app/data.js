@@ -9,12 +9,24 @@ const HOURS_12 = 60 * 60 * 12;
 export async function getUser(username) {
 	console.log('Fetching user data for', username);
 	console.time('getUser');
+
+	const token = process.env.GH_TOKEN;
+
 	const res = await fetch('https://api.github.com/users/' + username, {
-		headers: { Authorization: `Bearer ${process.env.GH_TOKEN}` },
+		headers: token ? { Authorization: `Bearer ${token}` } : {},
 		next: { revalidate }
 	});
+
 	console.timeEnd('getUser');
-	return res.json();
+
+	const data = await res.json().catch(() => null);
+
+  if (!res.ok) {
+    console.error('GitHub /users error:', res.status, res.statusText, data);
+    return null; // ✅ explicit: caller must handle missing user
+  }
+
+  return data;
 }
 
 export async function getRepos(username) {
@@ -37,7 +49,7 @@ export async function getSocialAccounts(username) {
 	console.time('getSocialAccounts');
 	const res = await fetch('https://api.github.com/users/' + username + '/social_accounts', {
 		headers: { Authorization: `Bearer ${process.env.GH_TOKEN}` },
-		next: { MINUTES_5 }
+		next: { revalidate: MINUTES_5 }
 	});
 	console.timeEnd('getSocialAccounts');
 	return res.json();
@@ -236,11 +248,11 @@ export async function checkAppJsxExistence(repoOwner, repoName) {
 		const [ isPagesRes, isAppLayoutRes ] = await Promise.all([
 			fetch(urlPagesApp, {
 				headers: { Authorization: `Bearer ${process.env.GH_TOKEN}` },
-				next: { HOURS_12 }
+				next: { revalidate: HOURS_12 }
 			}),
 			fetch(urlAppLayout, {
 				headers: { Authorization: `Bearer ${process.env.GH_TOKEN}` },
-				next: { HOURS_12 }
+				next: { revalidate: HOURS_12 }
 			}),
 		]);
 
